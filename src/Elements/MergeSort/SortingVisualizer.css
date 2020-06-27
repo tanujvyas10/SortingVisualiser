@@ -1,0 +1,15 @@
+.main-container {
+    position: absolute;
+    margin: 0 10%;
+  }
+  
+  .value-bar {
+    margin: 0 1px;
+    width: 2px;
+    display: inline-block;
+    background-color: teal;
+  }
+
+  .buttons{
+    flex-basis: auto;
+  }
