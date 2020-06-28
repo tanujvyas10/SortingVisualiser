@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './SortingVisualizer.css'
 import {AnimatedMergeSort} from '../../Algorithm/mergeSort'
+import {quickSort} from '../../Algorithm/quickSort'
 
 export default class SortingVisualizer extends Component {
   constructor(props){
@@ -23,22 +24,53 @@ export default class SortingVisualizer extends Component {
 
 
   resetArray=() =>{
+    
       const array = [];
 
-      for(let i=0;i<250;i++){
+      for(let i=0;i<300;i++){
           array.push(this.randomIntFromInterval(5,600));
       }
 
       this.setState({array})
   }
 
+quickSort(){
+  const animations = quickSort(this.state.array)
 
-  quickSort(){
+  const bars =  document.getElementsByClassName('value-bar')
+  
+  for (let index = 0; index < animations.length; index++) {
+  
+    const colorChange = index % 3 !==2;
+    if(colorChange){
+      const [first,second] = animations[index]
+      const barFirst = bars[first].style
+      const barSecond = bars[second].style
+      let color='';
+      if(index%3 ===0){
+        color = 'red'
+      }
+      else{
+        color='green'
+      }
 
+      setTimeout(()=>{
+        barFirst.background = color
+        barSecond.background = color
+      },index*1)
+    }
+    else{
+      setTimeout(()=>{
+        const [ first,height] = animations[index]
+        const barFirst = bars[first].style
+             barFirst.height = `${height}px`;
+      },index*1)
+    }
   }
+}
 
   mergeSort(){
-
+    
   const animations = AnimatedMergeSort(this.state.array)
   const bars =  document.getElementsByClassName('value-bar')
   
@@ -86,8 +118,20 @@ export default class SortingVisualizer extends Component {
         const {array} = this.state
         console.log("---",array)
         return (
+
             
             <div className="main-container">
+
+            <div className="buttons">
+            <button onClick={()=> this.resetArray() } >Ramdomize</button>
+            <button onClick={()=> this.quickSort()}  >Quick sort </button>
+            <button onClick={()=> this.mergeSort()}  >Merge Sort </button>
+            <button onClick={()=> this.heapSort() } >Heap Sort </button>
+            <button onClick={()=> this.bubbleSort()} >Bubble Sort </button>
+            </div>
+
+
+
               {
                   array.map((value,idx)=>(
                     <div
@@ -99,13 +143,7 @@ export default class SortingVisualizer extends Component {
                     }}></div>
                   ))
               }
-              <div className="buttons">
-              <button onClick={()=> this.resetArray() } >Ramdomize</button>
-              <button onClick={()=> this.quickSort()}  >Quick sort </button>
-              <button onClick={()=> this.mergeSort()}  >Merge Sort </button>
-              <button onClick={()=> this.heapSort() } >Heap Sort </button>
-              <button onClick={()=> this.bubbleSort()} >Bubble Sort </button>
-              </div>
+             
             
             </div>
           
