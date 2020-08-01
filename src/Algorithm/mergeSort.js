@@ -78,38 +78,3 @@ const MergeSort =(arr,startIdx,endIdx,intermediate,result) =>{
 
 
 
-
-// const MergeSort = (arr)=>{
-
-//     if(arr.length === 1) return arr
-// let result= [];
-
-// let middleIdx = Math.floor(arr.length/2)
-
-// let firstHalf = MergeSort(arr.slice(0,middleIdx));
-// let secondHalf = MergeSort(arr.slice(middleIdx))
-
-
-// let i=0,j=0;
-
-// while(i<firstHalf.length && j<secondHalf.length){
-//     if(firstHalf[i]< secondHalf[j]){
-//         result.push(firstHalf[i])
-//         i++;
-//     }
-//     else{
-//         result.push(secondHalf[j])
-//    j++;
-//     }
-// }
-
-
-// while(i<firstHalf.length)
-//     result.push(firstHalf[i++])
-    
-// while(j<secondHalf.length)
-//     result.push(secondHalf[j++])
-
-
-// return result
-// }
