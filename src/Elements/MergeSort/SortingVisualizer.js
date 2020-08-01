@@ -104,13 +104,7 @@ quickSort(){
   }
   }
 
-  bubbleSort(){
 
-  }
-
-  heapSort(){
-
-  }   
   
   
   render() {
@@ -126,8 +120,7 @@ quickSort(){
             <button onClick={()=> this.resetArray() } >Ramdomize</button>
             <button onClick={()=> this.quickSort()}  >Quick sort </button>
             <button onClick={()=> this.mergeSort()}  >Merge Sort </button>
-            <button onClick={()=> this.heapSort() } >Heap Sort </button>
-            <button onClick={()=> this.bubbleSort()} >Bubble Sort </button>
+      
             </div>
 
 
